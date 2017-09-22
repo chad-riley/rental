@@ -6,11 +6,16 @@
 </head>
 <body>
 
-<form method="post" action="/login">
-	<input type="email" required name="email" placeholder="enter email">
-	<input type="password" required name="password" placeholder="Your password">
-	<button>Login</button>
-	<input type="hidden" name="returnPath" value="{{returnPath}}">
-</form>
+	{{>/common/_navigation}}
+
+	<form method="post" action="/login">
+		<input type="email" required name="email" placeholder="Enter email">
+		<br>
+		<input type="password" required name="password"
+			placeholder="Your Password">
+		<br>
+		<button>Login</button>
+		<input type="hidden" name="returnPath" value="{{returnPath}}">
+	</form>
 </body>
 </html>

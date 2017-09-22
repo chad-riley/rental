@@ -5,28 +5,30 @@
 <title>Add a new apartment, fam.</title>
 </head>
 <body>
-
-<form method="post" action="/apartments">
-	<input type="number" required name="rent" placeholder="rent">
-	<br>
-	<input type="number" required name="numberOfBedrooms" placeholder="number of bedrooms">
-	<br>
-	<input type="number" required name="numberOfBathrooms" placeholder="number of bathrooms">
-	<br>
-	<input type="number" required name="squareFootage" placeholder="square footage">
-	<br>
-	<input type="text" required name="address" placeholder="address">
-	<br>
-	<input type="text" required name="city" placeholder="City">
-	<br>
-	<input type="text" required name="state" placeholder="State">
-	<br>
-	<input type="text" required name="zipCode" placeholder="Zip Code">
-	<br>
+<div>
+	{{>/common/_navigation}}
 	
-<button>Create</button>
-</form>
-	
-	
+	<form method="post" action="/apartments">
+		<input type="number" required name="rent" placeholder="rent">
+		<br>
+		<input type="number" required name="number_of_bedrooms" placeholder="Number of Bedrooms">
+		<br>
+		<input type="number" required name="number_of_bathrooms" placeholder="Number of Bathrooms">
+		<br>
+		<input type="number" required name="square_footage" placeholder="Square Footage">
+		<br>
+		<input type="text" required name="address" placeholder="Address">
+		<br>
+		<input type="text" required name="city" placeholder="City">
+		<br>
+		<input type="text" required name="state" placeholder="State">
+		<br>
+		<input type="text" required name="zip_code" placeholder="Zip Code">
+		<br>
+		<input type="hidden" name="number_of_likes" value=0>
+		
+	<button>Add Listing</button>
+	</form>
+</div>	
 </body>
 </html>

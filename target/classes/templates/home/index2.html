@@ -5,32 +5,34 @@
 <title>Welcome to your new home, fam.</title>
 </head>
 <body>
-<a href="/apartments/new">List a new apartment</a>
+{{>/common/_navigation}}
 
-#if($noUser)
-<a href="/login">Login</a>
-<br>
-<a href="/signUp">Sign up</a>
-<br>
-<h1>Apartments</h1>
-#end
-
-#if($currentUser)
-	Welcome, $currentUser.firstName ($currentUser.email)
+	#if($noUser)
+	<a href="/login">Login</a>
+	<br>
+	<a href="/signUp">Sign up</a>
+	<br>
+	<h1>Apartments</h1>
+	#end 
+	
+	#if($currentUser) Welcome, $currentUser.firstName
+	($currentUser.email)
+	<br>
+	<a href="/apartments/mine">My Listings</a>
 	<br>
 	<a href="/apartments/new">List a new apartment</a>
 	<br>
 	<a href="/logout">Log Out</a>
 	<br>
 	<h1>Apartments</h1>
-#end
+	#end
 
 
-<ul>
-#foreach( $apartment in $apartments)
-	<li><a href="/apartments/$apartment.id">$apartment.address</li>
-#end
-</ul>
+	<ul>
+		#foreach( $apartment in $apartments)
+		<li><a href="/apartments/$apartment.id">$apartment.address</li>
+		#end
+	</ul>
 
 </body>
 </html>

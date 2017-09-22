@@ -29,23 +29,32 @@ public class Application {
 
 	public static void main(String[] args) {
 
-		String encryptedPassword = BCrypt.hashpw("password", BCrypt.gensalt());
+		String encryptedPassword = BCrypt.hashpw("chad", BCrypt.gensalt());
 
 		try (AutoCloseableDb db = new AutoCloseableDb()) {
 			User.deleteAll();
-			new User("chad@coolguy.com", encryptedPassword, "Chad", "Riley").saveIt();
+			User chad = new User("chad@chad.com", encryptedPassword, "Chad", "Riley");
+			chad.saveIt();
 
 			Apartment.deleteAll();
-			new Apartment(5000, 1, 0, 350, "123 Main St.", "San Francisco", "CA", "95125").saveIt();
-			new Apartment(1100, 5, 6, 2350, "123 Cowboy St.", "Houston", "TX", "77006").saveIt();
-			new Apartment(2500, 3, 3, 1050, "4820 Puget Blvd SW", "Seattle", "WA", "98106").saveIt();
+			
+			Apartment apartment = new Apartment(5000, 1, 0, 350, "123 Main St.", "San Francisco", "CA", "95125",0, true);
+			chad.add(apartment);
+			apartment.saveIt();
+			
+			apartment = new Apartment(1100, 5, 6, 2350, "123 Cowboy St.", "Houston", "TX", "77006",0, false);
+			chad.add(apartment);
+			apartment.saveIt();	
 		}
 
 		path("/apartments", () -> {
-			before("/new", SecurityFilters.isAuthenticated);
-
+			//before("/new", SecurityFilters.isAuthenticated);
 			get("/new", ApartmentController.newForm);
+			
+			before("/mine", SecurityFilters.isAuthenticated);
+			get("/mine", ApartmentController.index);
 			get("/:id", ApartmentController.details);
+			
 			before("", SecurityFilters.isAuthenticated);
 			post("", ApartmentController.create);
 		});
@@ -55,9 +64,11 @@ public class Application {
 
 		get("/login", SessionController.newForm);
 		post("/login", SessionController.create);
-		get("/logout", SessionController.destroy);
-		get("/signUp", UserController.newForm);
-		post("/signUp", UserController.create);
+		post("/logout", SessionController.destroy);
+		
+		post("/users", UserController.create);
+		get("/users", UserController.newForm);
+		
 
 		path("/api", () -> {
 			get("/apartments/:id", ApartmentApiController.details);

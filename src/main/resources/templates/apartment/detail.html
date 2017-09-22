@@ -6,19 +6,47 @@
 </head>
 <body>
 
-<h1>Only ${{ apartment.rent }}</h1>
-<p>
-  {{ apartment.address }}<br>
-  {{ apartment.city }}, {{ apartment.state }} {{ apartment.zipCode }}
-</p>
-<dl>
-  <dt>Number of bedrooms</dt>
-  <dd>{{ apartment.numberOfBedrooms }}</dd>
-  <dt>Number of bathrooms</dt>
-  <dd>{{ apartment.numberOfBathrooms }}</dd>
-  <dt>Square footage</dt>
-  <dd>{{ apartment.squareFootage }}</dd>
-</dl>
+		{{>/common/_navigation}}
+		
+		<h1>Only ${{ apartment.rent }}</h1>
+		<p>
+			{{ apartment.address }}<br> {{ apartment.city }}, {{
+			apartment.state }} {{ apartment.zipCode }}
+		</p>
+			<dl>
+				<dt>Number of Bedrooms</dt>
+				<dd>{{ apartment.numberOfBedrooms }}</dd>
+				<dt>Number of Bathrooms</dt>
+				<dd>{{ apartment.numberOfBathrooms }}</dd>
+				<dt>Square Footage</dt>
+				<dd>{{ apartment.squareFootage }}</dd>
+				<dt>Number of Likes</dt>
+				<dd>{{ apartment.numberOfLikes }}</dd>
+			</dl>
+			
+		{{#currentUser}}
+			{{#owner}}
+				{{#apartmentIsInactive}}
+					<button>activate</button>
+				{{/apartmentIsInactive}}
+						
+				{{#apartmentIsActive}}
+					<button>deactivate</button>
+				{{/apartmentIsActive}}
+			{{/owner}}
+		{{/currentUser}}
+	
+		{{#currentUser}}
+			{{#notOwner}}
+				<button>Like this Apartment</button>
+			{{/notOwner}}
+		{{/currentUser}}
 
+		{{#noUser}}
+			<div>
+				<a href="/login? + returnPath/apartments/{{id}}">Login to LIKE this apartment</a>
+				<input type="hidden" name="returnPath" value="{{returnPath}}">
+			</div>
+		{{/noUser}}
 </body>
 </html>

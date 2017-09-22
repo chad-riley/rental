@@ -10,36 +10,44 @@ public class Apartment extends Model {
 	public Apartment() {
 	}
 
-	public Apartment(int rent, int numberOfBedrooms, double numberOfbathrooms, int squareFootage, String address,
-			String city, String state, String zipCode) {
+	public Apartment(int rent, int number_of_bedrooms, double number_of_bathrooms, int square_footage, String address,
+			String city, String state, String zip_code, int number_of_likes, boolean is_active) {
 		setRent(rent);
-		setNumberOfBedrooms(numberOfBedrooms);
-		setNumberOfBathrooms(numberOfbathrooms);
-		setSquareFootage(squareFootage);
+		setNumberOfBedrooms(number_of_bedrooms);
+		setNumberOfBathrooms(number_of_bathrooms);
+		setSquareFootage(square_footage);
 		setAddress(address);
 		setCity(city);
 		setState(state);
-		setZipCode(zipCode);
+		setZipCode(zip_code);
+		setNumberOfLikes(number_of_likes);
+		setIsActive(is_active);
 	}
 
+	//getters and setters
+	
 	public int getNumberOfBedrooms() {
 		return getInteger("number_of_bedrooms");
+	}
+	
+	public void setNumberOfBedrooms(int number_of_bedrooms) {
+		set("number_of_bedrooms", number_of_bedrooms);
 	}
 
 	public double getNumberOfBathrooms() {
 		return getInteger("number_of_bathrooms");
 	}
-
-	public void setNumberOfBathrooms(int numberOfBathrooms) {
-		set("number_of_bathrooms", numberOfBathrooms);
+	
+	public void setNumberOfBathrooms(double number_of_bathrooms) {
+		set("number_of_bathrooms", number_of_bathrooms);
 	}
 
 	public int getSquareFootage() {
 		return getInteger("square_footage");
 	}
 
-	public void setSquareFootage(int squareFootage) {
-		set("square_footage", squareFootage);
+	public void setSquareFootage(int square_footage) {
+		set("square_footage", square_footage);
 	}
 
 	public String getAddress() {
@@ -70,8 +78,8 @@ public class Apartment extends Model {
 		return getString("zip_code");
 	}
 
-	public void setZipCode(String zipCode) {
-		set("zip_code", zipCode);
+	public void setZipCode(String zip_code) {
+		set("zip_code", zip_code);
 	}
 
 	public int getRent() {
@@ -82,11 +90,20 @@ public class Apartment extends Model {
 		set("rent", rent);
 	}
 
-	public void setNumberOfBedrooms(int numberOfBedrooms) {
-		set("number_of_bedrooms", numberOfBedrooms);
+	public int getNumberOfLikes() {
+		return getInteger("number_of_likes");
 	}
 
-	public void setNumberOfBathrooms(double numberOfBathrooms) {
-		set("number_of_bathrooms", numberOfBathrooms);
+	public void setNumberOfLikes(int number_of_likes) {
+		set("number_of_likes", number_of_likes);
 	}
+	
+	public boolean getIsActive() {
+		return getBoolean("is_active");
+	}
+		
+	public void setIsActive (boolean is_active) {
+		set("is_active", is_active);
+	}
+	
 }

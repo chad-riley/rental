@@ -1,0 +1,22 @@
+    <link href="//cdn.muicss.com/mui-0.9.25/css/mui.min.css" rel="stylesheet" type="text/css" />
+    <script src="//cdn.muicss.com/mui-0.9.25/js/mui.min.js"></script>
+<div>
+  {{#currentUser}}
+  Welcome, {{ currentUser.firstName }} ({{currentUser.email}}) 
+  <br>
+  	<a href="/apartments/mine">Your listings</a>
+	<br>
+	<a href="/apartments/new">Add a listing</a>
+	<br>
+    <form action="/logout" method="post">
+      	<button>Logout</button>
+      	<input type="hidden" name="{{ _csrf.parameterName }}" value="{{ _csrf.token }}">
+    </form>  	
+  {{/currentUser}}
+  
+  {{#noUser}}
+    <a href="/login">Login</a>
+    <br>
+    <a href="/users">Sign up</a>
+  {{/noUser}}
+</div>

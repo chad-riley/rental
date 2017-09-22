@@ -2,22 +2,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Welcome to your new home, fam.</title>
+<title>Welcome home, fam.</title>
 </head>
 <body>
-{{#noUser}}
-<a href="/login">Login</a>
-{{/noUser}}
-{{#currentUser}}
-	Welcome, {{currentUser.firstName}} ({{currentUser.email}})
-{{/currentUser}}
 
-	<h1>Apartments</h1>
-	{{#apartments}}
+	{{>/common/_navigation}}
+
+	<h1>Apartments!</h1>
+
+	{{#activeApartments}}
 	<div>
-		<a href="/apartments/{{id}}">{{address}}</a>
+		<a href="/apartments/{{id}}">{{address}} {{city}}, {{state}}</a>
 	</div>
-	{{/apartments}}
+	{{/activeApartments}}
 
 
 </body>

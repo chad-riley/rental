@@ -4,14 +4,20 @@
 <meta charset="UTF-8">
 <title>Sign Up, fam.</title>
 </head>
-<body>
-
-<form method="post" action="/signUp">
-	<input type="email" required name="email" placeholder="enter email">
-	<input type="password" required name="password" placeholder="Your password">
-	<input type="text" required name="lastName" placeholder="Last Name">
-	<input type="text" required name="firstName" placeholder="First Name">
-	<button>Create</button>
-</form>
-</body>
+	<body>
+	
+		{{>/common/_navigation}}
+	
+		<form method="post" action="/users">
+			<input type="email" required name="email" placeholder="Enter email">
+			<br>
+			<input type="password" required name="password" placeholder="Your password">
+			<br>
+			<input type="text" required name="last_name" placeholder="Last Name">
+			<br>
+			<input type="text" required name="first_name" placeholder="First Name">
+			<br>
+			<button>Sign Up</button>
+		</form>
+	</body>
 </html>

@@ -6,11 +6,11 @@ public class User extends Model{
 
 	public User() {}
 
-	public User(String email, String password, String firstName, String lastName) {
+	public User(String email, String password, String first_name, String last_name) {
 		setEmail(email);
 		setPassword(password);
-		setFirstName(firstName);
-		setLastName(lastName);
+		setFirstName(first_name);
+		setLastName(last_name);
 	}
 
 	public String getEmail() {
