@@ -48,15 +48,25 @@ public class Application {
 		}
 
 		path("/apartments", () -> {
-			//before("/new", SecurityFilters.isAuthenticated);
+			before("/new", SecurityFilters.isAuthenticated);
 			get("/new", ApartmentController.newForm);
 			
 			before("/mine", SecurityFilters.isAuthenticated);
 			get("/mine", ApartmentController.index);
 			get("/:id", ApartmentController.details);
+
 			
 			before("", SecurityFilters.isAuthenticated);
 			post("", ApartmentController.create);
+			
+			before("/:id/like", SecurityFilters.isAuthenticated);
+			post("/:id/like", ApartmentController.likes);
+			
+			before("/:id/activations", SecurityFilters.isAuthenticated);
+			post(":/id/activations", ApartmentController.activate);
+			
+			before("/:id/deactvations", SecurityFilters.isAuthenticated);
+			post(":/id/deactivations", ApartmentController.deactivate);
 		});
 
 		get("/apartments/:id", ApartmentController.details);
@@ -67,7 +77,7 @@ public class Application {
 		post("/logout", SessionController.destroy);
 		
 		post("/users", UserController.create);
-		get("/users", UserController.newForm);
+		get("/users/new", UserController.newForm);
 		
 
 		path("/api", () -> {

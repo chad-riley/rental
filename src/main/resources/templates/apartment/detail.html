@@ -20,33 +20,44 @@
 				<dd>{{ apartment.numberOfBathrooms }}</dd>
 				<dt>Square Footage</dt>
 				<dd>{{ apartment.squareFootage }}</dd>
-				<dt>Number of Likes</dt>
-				<dd>{{ apartment.numberOfLikes }}</dd>
+
 			</dl>
+			
+			<h2>Number of Likes: {{numOfLikes}}</h2>
 			
 		{{#currentUser}}
 			{{#owner}}
 				{{#apartmentIsInactive}}
+					<form method="post" action="/apartments/{{apartment.id}}/activations">
 					<button>activate</button>
+					</form>
 				{{/apartmentIsInactive}}
 						
 				{{#apartmentIsActive}}
+					<form method="post" action="/apartments/{{apartment.id}}/deactivations">
 					<button>deactivate</button>
+					</form>
 				{{/apartmentIsActive}}
 			{{/owner}}
 		{{/currentUser}}
 	
 		{{#currentUser}}
 			{{#notOwner}}
+			{{#notLiker}}
+				<form method="post" action="/apartments/{{apartment.id}}/like">
 				<button>Like this Apartment</button>
+				</form>
+			{{/notLiker}}
 			{{/notOwner}}
 		{{/currentUser}}
 
 		{{#noUser}}
+		{{#notLiker}}
 			<div>
 				<a href="/login? + returnPath/apartments/{{id}}">Login to LIKE this apartment</a>
 				<input type="hidden" name="returnPath" value="{{returnPath}}">
 			</div>
+		{{/notLiker}}
 		{{/noUser}}
 </body>
 </html>
