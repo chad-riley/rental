@@ -29,13 +29,13 @@
 			{{#owner}}
 				{{#apartmentIsInactive}}
 					<form method="post" action="/apartments/{{apartment.id}}/activations">
-					<button>activate</button>
+					<button>Activate listing</button>
 					</form>
 				{{/apartmentIsInactive}}
 						
 				{{#apartmentIsActive}}
 					<form method="post" action="/apartments/{{apartment.id}}/deactivations">
-					<button>deactivate</button>
+					<button>Deactivate listing</button>
 					</form>
 				{{/apartmentIsActive}}
 			{{/owner}}
@@ -45,7 +45,7 @@
 			{{#notOwner}}
 			{{#notLiker}}
 				<form method="post" action="/apartments/{{apartment.id}}/like">
-				<button>Like this Apartment</button>
+				<button>Like this apartment</button>
 				</form>
 			{{/notLiker}}
 			{{/notOwner}}
@@ -54,7 +54,7 @@
 		{{#noUser}}
 		{{#notLiker}}
 			<div>
-				<a href="/login? + returnPath/apartments/{{id}}">Login to LIKE this apartment</a>
+				<a href="/login?returnPath=/apartments/{{apartment.id}}">Login to LIKE this apartment</a>
 				<input type="hidden" name="returnPath" value="{{returnPath}}">
 			</div>
 		{{/notLiker}}

@@ -63,10 +63,10 @@ public class Application {
 			post("/:id/like", ApartmentController.likes);
 			
 			before("/:id/activations", SecurityFilters.isAuthenticated);
-			post(":/id/activations", ApartmentController.activate);
+			post("/:id/activations", ApartmentController.activate);
 			
 			before("/:id/deactvations", SecurityFilters.isAuthenticated);
-			post(":/id/deactivations", ApartmentController.deactivate);
+			post("/:id/deactivations", ApartmentController.deactivate);
 		});
 
 		get("/apartments/:id", ApartmentController.details);

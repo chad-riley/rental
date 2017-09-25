@@ -132,12 +132,16 @@ public class ApartmentController {
 	};
 
 	public static final Route deactivate = (Request req, Response res) -> {
+		String idAsString = req.params("id");
+		int id = Integer.parseInt(idAsString);
+			
 		try (AutoCloseableDb db = new AutoCloseableDb()) {
-			int id = Integer.parseInt(req.params("id"));
-			User currentUser = req.session().attribute("currentUser");
+	//		int id = Integer.parseInt(req.params("id"));
 			Apartment apartment = Apartment.findById(id);
+			User currentUser = req.session().attribute("currentUser");
 			apartment.set("is_active", false);
 			apartment.saveIt();
+//			System.out.println(140);
 			res.redirect("/apartments/" + id);
 			return "";
 		}
